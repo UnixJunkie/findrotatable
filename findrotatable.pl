@@ -55,7 +55,7 @@ if (@ARGV < 1 ) {
 
 foreach $file (@ARGV){
 	next unless ($file =~ /mol2/i);
-        $file =~ s/\..*?$//; # remove file extension
+        $file =~ s/(.+)\.[^.]+$/$1/; # remove file extension
         open(MOL2FILE,"$file.mol2") or die "Cannot open file $file.mol2 $!\n";
         print ">>>>>>Processing file $file.mol2...\n";
         my %types=();
